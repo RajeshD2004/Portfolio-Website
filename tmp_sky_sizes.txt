@@ -1,0 +1,18 @@
+
+File: src/assets/3d/sky.glb
+node: Sketchfab_model scale: 1,1,1
+node: ce82b215774a421984210d58a9b7619a.fbx scale: 0.009999999776482582,0.009999999776482582,0.009999999776482582
+node: RootNode scale: 1,1,1
+node: Sphere scale: 50000,50000,50000
+node: Sphere__0 scale: 1,1,1
+
+File: src/assets/3d/skynight.glb
+node: Sketchfab_model scale: 0.0030803061090409756,0.0030803061090409756,0.0030803061090409756
+node: root scale: 1,1,1
+node: GLTF_SceneRootNode scale: 1,1,1
+node: Sphere_0 scale: 0.9985374212265012,0.998537302017212,0.9985373616218566
+node: Object_4 scale: 1,1,1
+node: Sphere.001_1 scale: 100.00006103515624,100,100
+node: Object_6 scale: 1,1,1
+node: Sphere.002_2 scale: 100.00006866455077,100.00000000000001,99.99999999999999
+node: Object_8 scale: 1,1,1
