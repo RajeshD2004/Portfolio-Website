@@ -22,12 +22,12 @@ const ProjectOverview = () => {
   }
 
   return (
-    <section className="max-container py-10">
+   <section className="max-container py-6 sm:py-8 lg:py-10 px-4 sm:px-0">
 
       {/* Back Button */}
      <Link
   to="/projects"
-  className="group inline-flex items-center gap-3 px-6 py-3 rounded-2xl
+  className="group inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-2.5 sm:py-3 rounded-2xl
   bg-gradient-to-r from-blue-600 via-cyan-500 to-indigo-600
   text-white font-semibold
   shadow-[0_10px_30px_rgba(59,130,246,0.35)]
@@ -35,7 +35,7 @@ const ProjectOverview = () => {
   hover:-translate-y-1
   transition-all duration-300"
 >
-  <span className="text-2xl transition-transform duration-300 group-hover:-translate-x-2">
+  <span className="text-xl sm:text-2xl transition-transform duration-300 group-hover:-translate-x-2">
     ←
   </span>
 
@@ -43,26 +43,26 @@ const ProjectOverview = () => {
 </Link>
 
       {/* Title */}
-      <div className="mt-6">
+     <div className="mt-5 sm:mt-6">
         <h1 className="head-text">
           <span className="blue-gradient_text font-semibold">
             {project.name}
           </span>
         </h1>
 
-        <p className="text-slate-500 mt-5 text-lg leading-relaxed max-w-4xl">
+        <p className="text-slate-500 mt-4 sm:mt-5 text-base sm:text-lg leading-7 max-w-4xl">
           {project.description}
         </p>
       </div>
 
       {/* Screenshot & Video */}
-      <div className="flex flex-col lg:flex-row gap-8 mt-12">
+      <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 mt-8 sm:mt-12">
 
         {/* Screenshot Slider */}
-       <div className="w-full lg:w-1/2 bg-white rounded-3xl shadow-2xl flex flex-col">
+       <div className="w-full lg:w-1/2 bg-white rounded-2xl sm:rounded-3xl shadow-2xl flex flex-col overflow-hidden">
 
-  <div className="p-6">
-    <h2 className="text-2xl font-bold">
+ <div className="p-4 sm:p-6">
+    <h2 className="text-xl sm:text-2xl font-bold">
       Project Screenshots
     </h2>
   </div>
@@ -95,7 +95,7 @@ const ProjectOverview = () => {
   </div>
 
   {/* Empty space to align with video description */}
-  <div className="p-6">
+ <div className="p-4 sm:p-6">
     <p className="text-transparent">
       Placeholder text for alignment.
     </p>
@@ -106,13 +106,13 @@ const ProjectOverview = () => {
         {/* Video */}
       <div className="w-full lg:w-1/2 bg-white rounded-3xl shadow-2xl flex flex-col">
 
-  <div className="p-6">
-    <h2 className="text-2xl font-bold">
+  <div className="p-4 sm:p-6">
+   <h2 className="text-xl sm:text-2xl font-bold">
       Project Demonstration
     </h2>
   </div>
 
-  <div className="px-6 flex-1">
+ <div className="px-4 sm:px-6 flex-1">
     <div className="aspect-video">
       <video
         controls
@@ -123,7 +123,7 @@ const ProjectOverview = () => {
     </div>
   </div>
 
-  <div className="p-6">
+  <div className="p-4 sm:p-6">
     <p className="text-slate-500">
       Watch a complete walkthrough of the project including its features,
       workflow, and overall functionality.
@@ -134,29 +134,27 @@ const ProjectOverview = () => {
       </div>
 
       {/* Technologies */}
-      <div className="mt-16">
+      <div className="mt-10 sm:mt-16">
 
-        <h2 className="text-3xl font-bold mb-8">
+       <h2 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8">
           Technologies Used
         </h2>
 
-        <div className="flex flex-wrap gap-5">
-
+       <div className="flex flex-wrap gap-3 sm:gap-5">
           {project.techStack.map((tech, index) => (
             <span
               key={index}
               className="
               floating-bubble
               relative
-              px-7
-              py-3
+              px-5 sm:px-7
+              py-2.5 sm:py-3
               rounded-full
               bg-white/20
               backdrop-blur-xl
               border
               border-white/30
-              text-blue-700
-              font-semibold
+              text-blue-700 text-sm sm:text-base font-semibold
               shadow-[0_8px_32px_rgba(31,38,135,0.25)]
               hover:scale-110
               hover:-translate-y-2

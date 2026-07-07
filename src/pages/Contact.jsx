@@ -72,18 +72,18 @@ const Contact = () => {
   };
 
   return (
-   <section className='relative flex lg:flex-row flex-col max-container py-4 min-h-[75vh]'>
+   <section className='relative flex flex-col lg:flex-row max-container py-6 sm:py-8 min-h-[75vh] gap-8 lg:gap-0'>
       {alert.show && <Alert {...alert} />}
 
-      <div className='flex-1 min-w-[50%] flex flex-col'>
-        <h1 className='head-text'>Get in Touch</h1>
+      <div className='flex-1 min-w-full lg:min-w-[50%] flex flex-col'>
+       <h1 className='head-text text-3xl sm:text-4xl'>Get in Touch</h1>
 
-        <form
-          ref={formRef}
-          onSubmit={handleSubmit}
-          className='w-full flex flex-col gap-4 mt-4'
-        >
-          <label className='text-black-500 font-semibold'>
+       <form
+  ref={formRef}
+  onSubmit={handleSubmit}
+  className='w-full flex flex-col gap-5 mt-6'
+>
+          <label className='text-black-500 font-semibold text-sm sm:text-base'>
             Name
             <input
               type='text'
@@ -128,7 +128,7 @@ const Contact = () => {
           <button
             type='submit'
             disabled={loading}
-            className='btn'
+            className='btn w-full sm:w-fit'
             onFocus={handleFocus}
             onBlur={handleBlur}
           >
@@ -137,7 +137,7 @@ const Contact = () => {
         </form>
       </div>
 
-      <div className='lg:w-1/2 w-full lg:h-auto md:h-[550px] h-[350px]'>
+     <div className='w-full lg:w-1/2 h-[280px] sm:h-[380px] md:h-[500px] lg:h-auto'>
         <Canvas
           camera={{
             position: [0, 0, 5],
@@ -157,12 +157,16 @@ const Contact = () => {
           />
 
           <Suspense fallback={<Loader />}>
-            <Fox
-              currentAnimation={currentAnimation}
-              position={[0.5, 0.1, 0]}
-              rotation={[12.629, -0.7, 0]}
-              scale={[0.75, 0.75, 0.65]}
-            />
+           <Fox
+  currentAnimation={currentAnimation}
+  position={[0.5, 0.1, 0]}
+  rotation={[12.629, -0.7, 0]}
+  scale={
+    window.innerWidth < 768
+      ? [0.6, 0.6, 0.55]
+      : [0.75, 0.75, 0.65]
+  }
+/>
           </Suspense>
         </Canvas>
       </div>

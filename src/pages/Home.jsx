@@ -24,42 +24,60 @@ const Home = () => {
       audioRef.current.pause();
     };
   }, [isPlayingMusic]);
+const adjustBiplaneForScreenSize = () => {
+  let screenScale, screenPosition;
 
-  const adjustBiplaneForScreenSize = () => {
-    let screenScale, screenPosition;
+  if (window.innerWidth < 480) {
+    // Small mobile
+    screenScale = [1.2, 1.2, 1.2];
+    screenPosition = [0, -1.2, 0];
+  } else if (window.innerWidth < 768) {
+    // Large mobile
+    screenScale = [1.5, 1.5, 1.5];
+    screenPosition = [0, -1.5, 0];
+  } else if (window.innerWidth < 1024) {
+    // Tablet
+    screenScale = [2.2, 2.2, 2.2];
+    screenPosition = [0, -3, -2];
+  } else {
+    // Desktop
+    screenScale = [3, 3, 3];
+    screenPosition = [0, -4, -4];
+  }
 
-    // If screen width is less than 768px, adjust the scale and position
-    if (window.innerWidth < 768) {
-      screenScale = [1.5, 1.5, 1.5];
-      screenPosition = [0, -1.5, 0];
-    } else {
-      screenScale = [3, 3, 3];
-      screenPosition = [0, -4, -4];
-    }
+  return [screenScale, screenPosition];
+};
 
-    return [screenScale, screenPosition];
-  };
+ const adjustIslandForScreenSize = () => {
+  let screenScale, screenPosition;
 
-  const adjustIslandForScreenSize = () => {
-    let screenScale, screenPosition;
+  if (window.innerWidth < 480) {
+    // Small mobile
+    screenScale = [0.72, 0.72, 0.72];
+    screenPosition = [0, -6.2, -43.4];
+  } else if (window.innerWidth < 768) {
+    // Large mobile
+    screenScale = [0.82, 0.82, 0.82];
+    screenPosition = [0, -6.4, -43.4];
+  } else if (window.innerWidth < 1024) {
+    // Tablet
+    screenScale = [0.92, 0.92, 0.92];
+    screenPosition = [0, -6.5, -43.4];
+  } else {
+    // Desktop
+    screenScale = [1, 1, 1];
+    screenPosition = [0, -6.5, -43.4];
+  }
 
-    if (window.innerWidth < 768) {
-      screenScale = [0.9, 0.9, 0.9];
-      screenPosition = [0, -6.5, -43.4];
-    } else {
-      screenScale = [1, 1, 1];
-      screenPosition = [0, -6.5, -43.4];
-    }
-
-    return [screenScale, screenPosition];
-  };
+  return [screenScale, screenPosition];
+};
 
   const [biplaneScale, biplanePosition] = adjustBiplaneForScreenSize();
   const [islandScale, islandPosition] = adjustIslandForScreenSize();
 
   return (
     <section className='w-full h-screen relative'>
-      <div className='absolute top-28 left-0 right-0 z-10 flex items-center justify-center'>
+      <div className='absolute top-20 sm:top-24 md:top-28 left-0 right-0 z-10 flex items-center justify-center px-4'>
         {currentStage && <HomeInfo currentStage={currentStage} />}
       </div>
 
@@ -104,7 +122,7 @@ const Home = () => {
         </Suspense>
       </Canvas>
 
-      <div className='absolute bottom-2 left-2'>
+     <div className='absolute bottom-4 left-4 sm:bottom-2 sm:left-2 z-20'>
         <img
           src={!isPlayingMusic ? soundoff : soundon}
           alt='jukebox'
