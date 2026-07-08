@@ -142,7 +142,7 @@ const [[islandScale, islandPosition], setIsland] = useState(
         </Suspense>
       </Canvas>
 
-     <div className="absolute bottom-5 left-5 sm:bottom-4 sm:left-4 z-30">
+     <div className="absolute bottom-14 left-5 sm:bottom-5 sm:left-4 z-30">
         <img
           src={!isPlayingMusic ? soundoff : soundon}
           alt='jukebox'
