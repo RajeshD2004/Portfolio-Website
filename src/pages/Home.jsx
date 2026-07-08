@@ -24,6 +24,21 @@ const Home = () => {
       audioRef.current.pause();
     };
   }, [isPlayingMusic]);
+
+  useEffect(() => {
+  const handleResize = () => {
+    setBiplane(adjustBiplaneForScreenSize());
+    setIsland(adjustIslandForScreenSize());
+  };
+
+  handleResize();
+
+  window.addEventListener("resize", handleResize);
+
+  return () => window.removeEventListener("resize", handleResize);
+}, []);
+
+
 const adjustBiplaneForScreenSize = () => {
   let screenScale, screenPosition;
 
@@ -53,27 +68,32 @@ const adjustBiplaneForScreenSize = () => {
 
   if (window.innerWidth < 480) {
     // Small mobile
-    screenScale = [0.72, 0.72, 0.72];
+    screenScale = [0.62, 0.62, 0.62];
     screenPosition = [0, -6.2, -43.4];
   } else if (window.innerWidth < 768) {
     // Large mobile
-    screenScale = [0.82, 0.82, 0.82];
+    screenScale = [0.72, 0.72, 0.72];
     screenPosition = [0, -6.4, -43.4];
   } else if (window.innerWidth < 1024) {
     // Tablet
-    screenScale = [0.92, 0.92, 0.92];
+    screenScale = [0.84, 0.84, 0.84];
     screenPosition = [0, -6.5, -43.4];
   } else {
     // Desktop
-    screenScale = [1, 1, 1];
+    screenScale = [0.9, 0.9, 0.9];
     screenPosition = [0, -6.5, -43.4];
   }
 
   return [screenScale, screenPosition];
 };
 
-  const [biplaneScale, biplanePosition] = adjustBiplaneForScreenSize();
-  const [islandScale, islandPosition] = adjustIslandForScreenSize();
+ const [[biplaneScale, biplanePosition], setBiplane] = useState(
+  adjustBiplaneForScreenSize()
+);
+
+const [[islandScale, islandPosition], setIsland] = useState(
+  adjustIslandForScreenSize()
+);
 
   return (
     <section className='w-full h-screen relative'>
@@ -122,7 +142,7 @@ const adjustBiplaneForScreenSize = () => {
         </Suspense>
       </Canvas>
 
-     <div className='absolute bottom-4 left-4 sm:bottom-2 sm:left-2 z-20'>
+     <div className="absolute bottom-5 left-5 sm:bottom-4 sm:left-4 z-30">
         <img
           src={!isPlayingMusic ? soundoff : soundon}
           alt='jukebox'
